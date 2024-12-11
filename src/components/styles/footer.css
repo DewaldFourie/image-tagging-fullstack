@@ -1,0 +1,43 @@
+@font-face {
+    font-family: 'mainFont';
+    src: url('../../assets/marcelusFont.ttf');
+}
+
+.footer-container {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #28282B;
+    color: aliceblue;
+    height: 3.12rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-family: 'mainFont';
+}
+
+.footer-info-container {
+    width: 15%;
+    margin-left: 1rem;
+}
+
+
+
+@media (max-width: 1000px) {
+
+    .footer-info-container {
+        display: none;
+    }
+
+    .footer-copyright-container {
+        margin-left: 1rem;
+    }
+}
+
+@media (max-width: 500px) {
+    
+    .footer-copyright-container {
+        font-size: 12px;
+    }
+}
