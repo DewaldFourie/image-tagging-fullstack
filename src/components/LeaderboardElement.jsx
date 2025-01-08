@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 // mock data
 const leaderboardData = {
     g1: {
-        name: "Game 1", 
+        name: "Warm-Up", 
         description: "Description for Game 1",
         leaderboard: [
             { name: "Player 1", score: 100 },
@@ -11,7 +11,7 @@ const leaderboardData = {
         ],
     },
     g2: {
-        name: "Game 2", 
+        name: "A Bit Tricky", 
         description: "Description for Game 2",
         leaderboard: [
             { name: "Player 1", score: 80 },
@@ -21,7 +21,7 @@ const leaderboardData = {
         ],
     },
     g3: {
-        name: "Game 3", 
+        name: "Beast Mode", 
         description: "Description for Game 3",
         leaderboard: [
             { name: "Player 1", score: 60 },

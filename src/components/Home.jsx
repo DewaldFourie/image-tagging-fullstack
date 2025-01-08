@@ -9,13 +9,13 @@ function Home() {
             <h1>Home</h1>
                 <div className="preview-container">
                     <div className="preview-element">
-                        <Link to="/game/g1">Game 1</Link>
+                        <Link to="/game/g1">Warm-Up</Link>
                     </div>
                     <div className="preview-element">
-                        <Link to="/game/g2">Game 2</Link>
+                        <Link to="/game/g2">A Bit Tricky</Link>
                     </div>
                     <div className="preview-element">
-                        <Link to="/game/g3">Game 3</Link>
+                        <Link to="/game/g3">Beast Mode</Link>
                     </div>
                 </div>
                 <div className="leaderboard-container">
