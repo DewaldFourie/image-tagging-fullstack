@@ -7,13 +7,13 @@ function Leaderboard() {
             <h1>Leaderboard</h1>
             <ul>
                 <li>
-                    <Link to="/leaderboard/game1">Game 1 Leaderboard</Link>
+                    <Link to="/leaderboard/g1">Game 1 Leaderboard</Link>
                 </li>
                 <li>
-                    <Link to="/leaderboard/game2">Game 2 Leaderboard</Link>
+                    <Link to="/leaderboard/g2">Game 2 Leaderboard</Link>
                 </li>
                 <li>
-                    <Link to="/leaderboard/game3">Game 3 Leaderboard</Link>
+                    <Link to="/leaderboard/g3">Game 3 Leaderboard</Link>
                 </li>
             </ul>
         </div>

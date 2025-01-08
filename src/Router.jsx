@@ -4,6 +4,8 @@ import Home from "./components/Home";
 import Leaderboard from "./components/Leaderboard";
 import Base from "./Base";
 import About from "./components/About";
+import Game from "./components/Game";
+import LeaderboardElement from "./components/LeaderboardElement";
 
 const Router = () => {
     const router = createBrowserRouter([
@@ -24,6 +26,14 @@ const Router = () => {
                     path: "/about",
                     element: <About />
                 },
+                {
+                    path: "/game/:gameId",
+                    element: <Game />
+                },
+                {
+                    path: "/leaderboard/:gameId",
+                    element: <LeaderboardElement />
+                }
             ],
         },
     ]);

@@ -1,0 +1,47 @@
+
+.game-container{
+    margin-top: 7rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.timer-container{
+    margin-bottom: 1rem;
+    position: fixed;
+    right: 5rem;
+    top: 50px;
+}
+
+.button-container{
+    position: fixed;
+    top: 5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+.image-container{
+    margin-bottom: 1rem;
+    margin-top: 2rem;
+}
+
+.game-over-container{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: aliceblue;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-self: center;
+    padding: 3rem;
+    border-radius: 25px;
+}
+
+.result-time {
+    align-self: center;
+}
