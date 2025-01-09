@@ -18,14 +18,17 @@ const gameData = {
             target1: {
                 name: "Crazy Chicken",
                 image: crazyChicken,
+                coordinates: { x: 703, y: 722 },
             },
             target2: {
                 name: "Running Roman",
                 image: runningRoman,
+                coordinates: { x: 726, y: 1270 },
             },
             target3: {
                 name: "Sand Man",
                 image: sandMan,
+                coordinates: { x: 107, y: 480 },
             }
         },
     },
@@ -50,6 +53,9 @@ const Game = () => {
     const [isGameEnded, setIsGameEnded] = useState(false);
     const [targetSticky, setTargetSticky] = useState(false);
     const [clickCoordinates, setClickCoordinates] = useState(null);
+    const [dropdownVisible, setDropdownVisible] = useState(false);
+    const [dropdownPosition, setDropdownPosition] = useState({ x: 0, y: 0 });
+
 
     useEffect(() => {
         const handleScroll = () => {
@@ -91,17 +97,50 @@ const Game = () => {
     };
 
     const handleImageClick = (e) => {
-        const image = e.target;
-        const rect = image.getBoundingClientRect();
-
-        const clickX = e.clientX - rect.left;
-        const clickY = e.clientY - rect.top;
-        
-        const normalizedX = (clickX / rect.width) * image.naturalWidth;
-        const normalizedY = (clickY / rect.height) * image.naturalHeight;
-
-        setClickCoordinates({ x: normalizedX, y: normalizedY });
+        if (isGameStarted) {
+            const image = e.target;
+            const rect = image.getBoundingClientRect();
+    
+            const clickX = e.clientX - rect.left;
+            const clickY = e.clientY - rect.top;
+            
+            const normalizedX = (clickX / rect.width) * image.naturalWidth;
+            const normalizedY = (clickY / rect.height) * image.naturalHeight;
+    
+            setClickCoordinates({ x: normalizedX, y: normalizedY });
+            setDropdownPosition({ x: e.clientX + window.scrollX + 20, y: e.clientY + window.scrollY });
+            setDropdownVisible(true);
+        }
     }
+
+
+    const handleTargetSelect = (targetName) => {
+        setDropdownVisible(false);
+    
+        const tolerance = 40;
+    
+        // Find the selected target dynamically
+        const selectedTarget = Object.values(game.targets).find(
+            (target) => target.name === targetName
+        );
+    
+        if (!selectedTarget || !selectedTarget.coordinates) {
+            console.log("Fail!, You selected wrong target");
+            return;
+        }
+    
+        const { x, y } = selectedTarget.coordinates;
+    
+        if (
+            Math.abs(clickCoordinates.x - x) <= tolerance &&
+            Math.abs(clickCoordinates.y - y) <= tolerance
+        ) {
+            console.log(`Success!, You selected ${targetName}`);
+        } else {
+            console.log(`Fail!, You selected wrong target`);
+        }
+    };
+    
 
     // TEMPORARY CODE
     const handleTargetCapture = () => {
@@ -153,12 +192,31 @@ const Game = () => {
                 </div>
             )}
             <div className='image-container'>
+                <img onClick={handleImageClick} src={game.image} alt="Game Image" className="game-image" />
+            </div>
+
+            {dropdownVisible && (
+                <div 
+                    className="dropdown-menu" 
+                    style={{ top: dropdownPosition.y, left: dropdownPosition.x }}
+                >
+                    <ul>
+                        {Object.keys(game.targets).map((key) => (
+                            <li key={key} onClick={() => handleTargetSelect(game.targets[key].name)}>
+                                <img 
+                                    src={game.targets[key].image} 
+                                    alt={game.targets[key].name} 
+                                    className='dropdown-target-image'
+                                />
+                                {game.targets[key].name}
+                            </li>
+                        ))}
+                    </ul>
+                </div>
+            )}
             {clickCoordinates && (
                 <button onClick={handleTargetCapture}>Capture Coordinates</button>
             )}
-
-                <img onClick={handleImageClick} src={game.image} alt="Game Image" className="game-image" />
-            </div>
         </div>
     );
 }
