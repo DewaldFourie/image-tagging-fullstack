@@ -23,7 +23,7 @@ const gameData = {
                 name: "Running Roman",
                 image: runningRoman,
             },
-            taret3: {
+            target3: {
                 name: "Sand Man",
                 image: sandMan,
             }
@@ -49,6 +49,7 @@ const Game = () => {
     const [timer, setTimer] = useState(0);
     const [isGameEnded, setIsGameEnded] = useState(false);
     const [targetSticky, setTargetSticky] = useState(false);
+    const [clickCoordinates, setClickCoordinates] = useState(null);
 
     useEffect(() => {
         const handleScroll = () => {
@@ -89,6 +90,29 @@ const Game = () => {
         setIsGameEnded(true);
     };
 
+    const handleImageClick = (e) => {
+        const image = e.target;
+        const rect = image.getBoundingClientRect();
+
+        const clickX = e.clientX - rect.left;
+        const clickY = e.clientY - rect.top;
+        
+        const normalizedX = (clickX / rect.width) * image.naturalWidth;
+        const normalizedY = (clickY / rect.height) * image.naturalHeight;
+
+        setClickCoordinates({ x: normalizedX, y: normalizedY });
+    }
+
+    // TEMPORARY CODE
+    const handleTargetCapture = () => {
+        if (clickCoordinates) {
+            console.log(
+                `Coordinates for target: (${clickCoordinates.x}, ${clickCoordinates.y})`
+            );
+            // Use this data to update your gameData targets
+        }
+    };
+
     if (!game) {
         return <div>Game not found</div>;
     }
@@ -105,7 +129,7 @@ const Game = () => {
                     <div className={`target-container ${targetSticky ? 'sticky' : ''}`}>
                         <img src={game.targets.target1.image} alt="target image" className='target-image' />
                         <img src={game.targets.target2.image} alt="target image" className='target-image' />
-                        <img src={game.targets.taret3.image} alt="target image" className='target-image' />
+                        <img src={game.targets.target3.image} alt="target image" className='target-image' />
                     </div>
                 </div>
             </div>
@@ -129,7 +153,11 @@ const Game = () => {
                 </div>
             )}
             <div className='image-container'>
-                <img src={game.image} alt="Game Image" className="game-image" />
+            {clickCoordinates && (
+                <button onClick={handleTargetCapture}>Capture Coordinates</button>
+            )}
+
+                <img onClick={handleImageClick} src={game.image} alt="Game Image" className="game-image" />
             </div>
         </div>
     );
