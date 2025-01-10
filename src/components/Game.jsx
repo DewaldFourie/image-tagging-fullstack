@@ -1,6 +1,7 @@
 import '../components/styles/game.css'
 import { useParams } from "react-router-dom";
 import { useState , useEffect } from "react";
+import { Link } from "react-router-dom";
 import game1IMG from '../assets/images/photo-tagging-easy.jpeg'
 import crazyChicken from '../assets/images/crazy-chicken.jpg'
 import runningRoman from '../assets/images/running-roman.jpg'
@@ -55,6 +56,8 @@ const Game = () => {
     const [clickCoordinates, setClickCoordinates] = useState(null);
     const [dropdownVisible, setDropdownVisible] = useState(false);
     const [dropdownPosition, setDropdownPosition] = useState({ x: 0, y: 0 });
+    const [locatedTargets, setLocatedTargets] = useState({});
+    const [isGameWon, setIsGameWon] = useState(false);
 
 
     useEffect(() => {
@@ -89,11 +92,17 @@ const Game = () => {
         setIsGameStarted(true);
         setIsGameEnded(false);
         setTimer(0);
+        setLocatedTargets({})
+        setDropdownVisible(false)
+        setIsGameWon(false)
     };
     
     const handleEndGame = () => {
         setIsGameStarted(false);
         setIsGameEnded(true);
+        setDropdownVisible(false);
+        setLocatedTargets({})
+        setIsGameWon(false)
     };
 
     const handleImageClick = (e) => {
@@ -136,6 +145,19 @@ const Game = () => {
             Math.abs(clickCoordinates.y - y) <= tolerance
         ) {
             console.log(`Success!, You selected ${targetName}`);
+            setLocatedTargets((prev) => {
+                const updatedLocatedTargets = { ...prev, [targetName]: true};
+
+                // check if all targets are located
+                if (Object.keys(updatedLocatedTargets).length === Object.keys(game.targets).length) {
+                    setIsGameWon(true)
+                    setIsGameEnded(true);
+                    setIsGameStarted(false); //stop the game
+                    console.log("Well done, You've found them all!");
+                }
+
+                return updatedLocatedTargets
+            });
         } else {
             console.log(`Fail!, You selected wrong target`);
         }
@@ -159,16 +181,45 @@ const Game = () => {
     return (
         <div className="game-container">
             <div className='game-top-container'>
-                <div className='game-header-container'>
+                <div className={`button-container ${targetSticky ? 'sticky' : ''}`}>
+                    <button
+                        className={`start-end-btn start`}
+                        onClick={handleStartGame}
+                    >
+                        {isGameStarted ? "Restart" : "Start"}
+                    </button>
+                    <button
+                        className={`start-end-btn end ${!isGameStarted ? 'hidden' : ''}`}
+                        onClick={handleEndGame}
+                    >
+                        End
+                    </button>
+                </div>
+                <div className={`game-header-container ${targetSticky ? 'sticky' : ''}`}>
                     <h1 className='game-header'>{game.name}</h1>
                     <h4 className='game-description'>{game.description}</h4>
                 </div>
                 <div className='instructions-container'>
                     <h2 className='game-instructions'>{game.objective}</h2>
                     <div className={`target-container ${targetSticky ? 'sticky' : ''}`}>
-                        <img src={game.targets.target1.image} alt="target image" className='target-image' />
-                        <img src={game.targets.target2.image} alt="target image" className='target-image' />
-                        <img src={game.targets.target3.image} alt="target image" className='target-image' />
+                        {Object.keys(game.targets).map((key) => {
+                            const target = game.targets[key];
+                            const isLocated = locatedTargets[target.name]
+                            return (
+                                <div key={key} className='target-wrapper'>
+                                    <img 
+                                        src={target.image} 
+                                        alt={target.name}
+                                        className={`target-image ${isLocated ? 'located' : ''}`} 
+                                    />
+                                    {isLocated && (
+                                        <div className='target-checkmark'>
+                                            <span>✔</span>
+                                        </div>
+                                    )}
+                                </div>
+                            )
+                        })}
                     </div>
                 </div>
             </div>
@@ -177,40 +228,43 @@ const Game = () => {
                     <h2>Timer: {timer}</h2>
                 </div>
             ) : null}
-            <div className='button-container'>
-                <button onClick={handleStartGame}>{isGameStarted ? "Restart Game" : "Start Game"}</button>
-                <button onClick={handleEndGame} disabled={isGameEnded}>
-                    End Game
-                </button>
-            </div>
-
             {isGameEnded && (
                 <div className="game-over-container">
-                    <h2>Game Over</h2>
+                    <h2>{isGameWon ? "Well done! You've found them all." : "Game Over"}</h2>
                     <p className='result-time'>Final Timer: {timer}</p>
                     <button onClick={() => setIsGameEnded(false)}>Play Again</button>
+                    <Link to="/">Quit</Link>
                 </div>
             )}
             <div className='image-container'>
                 <img onClick={handleImageClick} src={game.image} alt="Game Image" className="game-image" />
             </div>
-
             {dropdownVisible && (
                 <div 
                     className="dropdown-menu" 
                     style={{ top: dropdownPosition.y, left: dropdownPosition.x }}
                 >
                     <ul>
-                        {Object.keys(game.targets).map((key) => (
-                            <li key={key} onClick={() => handleTargetSelect(game.targets[key].name)}>
+                        {Object.keys(game.targets).map((key) => {
+                            const targetName = game.targets[key].name;
+                            const isLocated = locatedTargets[targetName];
+                            
+                            return (
+                                <li 
+                                    key={key} 
+                                    onClick={!isLocated ? () => handleTargetSelect(targetName) : null}
+                                    className={isLocated ? 'target-located' : ''}
+                                    style={{ pointerEvents: isLocated ? 'none' : 'auto' , opacity: isLocated ? 0.5 : 1 }}
+                                >
                                 <img 
                                     src={game.targets[key].image} 
-                                    alt={game.targets[key].name} 
+                                    alt={targetName} 
                                     className='dropdown-target-image'
                                 />
-                                {game.targets[key].name}
+                                {targetName}
                             </li>
-                        ))}
+                            )
+                        })}
                     </ul>
                 </div>
             )}
