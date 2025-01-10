@@ -117,7 +117,7 @@ const Game = () => {
             const normalizedY = (clickY / rect.height) * image.naturalHeight;
     
             setClickCoordinates({ x: normalizedX, y: normalizedY });
-            setDropdownPosition({ x: e.clientX + window.scrollX + 20, y: e.clientY + window.scrollY });
+            setDropdownPosition({ x: e.clientX + window.scrollX + 45, y: e.clientY + window.scrollY });
             setDropdownVisible(true);
         }
     }
