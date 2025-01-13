@@ -186,7 +186,7 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: rgba(0, 0, 0, 0.816);
+    background-color: #28282bda;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -196,8 +196,23 @@
     width: 250px;
 }
 
+.game-over-header {
+    color: aliceblue;
+    text-align: center;
+}
+
 .result-time {
     align-self: center;
+    color: aliceblue;
+}
+
+.game-over-btn-container {
+    display: flex;
+    justify-content: space-around;
+}
+
+.game-over-btn {
+    width: 6rem;
 }
 
 /* DROPDOWN MENU STYLES */

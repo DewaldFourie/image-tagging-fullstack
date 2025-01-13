@@ -1,53 +1,12 @@
 import '../components/styles/game.css'
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { useState , useEffect } from "react";
-import { Link } from "react-router-dom";
-import game1IMG from '../assets/images/photo-tagging-easy.jpeg'
-import crazyChicken from '../assets/images/crazy-chicken.jpg'
-import runningRoman from '../assets/images/running-roman.jpg'
-import sandMan from '../assets/images/sand-man.jpg'
-
-// mock data
-const gameData = {
-    g1: {
-        name: "Warm-Up",
-        difficulty: "Easy",
-        description: "Get comfortable with this level on how to find the elusive characters & give your eagle eye a test run.",
-        image: game1IMG,
-        objective: "Find the elusive characters",
-        targets : {
-            target1: {
-                name: "Crazy Chicken",
-                image: crazyChicken,
-                coordinates: { x: 703, y: 722 },
-            },
-            target2: {
-                name: "Running Roman",
-                image: runningRoman,
-                coordinates: { x: 726, y: 1270 },
-            },
-            target3: {
-                name: "Sand Man",
-                image: sandMan,
-                coordinates: { x: 107, y: 480 },
-            }
-        },
-    },
-    g2: {
-        name: "A Bit Tricky",
-        difficulty: "Medium",
-        description: "Description for Game 2"
-    },
-    g3: {
-        name: "Beast Mode",
-        difficulty: "Hard",
-        description: "Description for Game 3"
-    }
-}
+import gameData from './Data'
 
 const Game = () => {
     const { gameId } = useParams();
     const game  = gameData[gameId];
+    const navigate = useNavigate();
 
     const [isGameStarted, setIsGameStarted] = useState(false);
     const [timer, setTimer] = useState(0);
@@ -58,6 +17,7 @@ const Game = () => {
     const [dropdownPosition, setDropdownPosition] = useState({ x: 0, y: 0 });
     const [locatedTargets, setLocatedTargets] = useState({});
     const [isGameWon, setIsGameWon] = useState(false);
+    const [username, setUsername] = useState('');
 
 
     useEffect(() => {
@@ -162,6 +122,12 @@ const Game = () => {
             console.log(`Fail!, You selected wrong target`);
         }
     };
+
+    const handleFormSubmit = (e) => {
+        e.preventDefault();
+
+        console.log(`Player Name: ${username} Score: ${timer}`)
+    }
     
 
     // TEMPORARY CODE
@@ -173,6 +139,7 @@ const Game = () => {
             // Use this data to update your gameData targets
         }
     };
+
 
     if (!game) {
         return <div>Game not found</div>;
@@ -230,10 +197,32 @@ const Game = () => {
             ) : null}
             {isGameEnded && (
                 <div className="game-over-container">
-                    <h2>{isGameWon ? "Well done! You've found them all." : "Game Over"}</h2>
+                    <h2 className='game-over-header'>{isGameWon ? "Well done! You've found them all." : "Game Over"}</h2>
                     <p className='result-time'>Final Timer: {timer}</p>
-                    <button onClick={() => setIsGameEnded(false)}>Play Again</button>
-                    <Link to="/">Quit</Link>
+                    {isGameWon && (
+                        <div className='result-data-capture-container'>
+                            <form action="" method="get" onSubmit={handleFormSubmit}>
+                                <label htmlFor="username">Player Name:</label>
+                                <input 
+                                    type="text" 
+                                    id='username'
+                                    value={username}
+                                    onChange={(e) => setUsername(e.target.value)}
+                                    placeholder='Player Name'
+                                    required
+                                />
+                                <button type='submit' className='score-submit-btn'>
+                                    Submit Result
+                                </button>
+                            </form>
+                        </div>
+                    )}
+                    {!isGameWon && (
+                        <div className='game-over-btn-container'>
+                            <button className='game-over-btn play-again-btn' onClick={() => setIsGameEnded(false)}>Play Again</button>
+                            <button className='game-over-btn quit-btn' onClick={() => navigate('/')}>Quit</button>
+                        </div>
+                    )}
                 </div>
             )}
             <div className='image-container'>

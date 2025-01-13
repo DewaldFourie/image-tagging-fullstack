@@ -1,41 +1,12 @@
 import { useParams } from "react-router-dom";
+import gameData from "./Data";
 
 // mock data
-const leaderboardData = {
-    g1: {
-        name: "Warm-Up", 
-        description: "Description for Game 1",
-        leaderboard: [
-            { name: "Player 1", score: 100 },
-            { name: "Player 2", score: 90 },
-        ],
-    },
-    g2: {
-        name: "A Bit Tricky", 
-        description: "Description for Game 2",
-        leaderboard: [
-            { name: "Player 1", score: 80 },
-            { name: "Player 2", score: 70 },
-            { name: "Player 3", score: 60 },
-            { name: "Player 4", score: 50 },
-        ],
-    },
-    g3: {
-        name: "Beast Mode", 
-        description: "Description for Game 3",
-        leaderboard: [
-            { name: "Player 1", score: 60 },
-            { name: "Player 2", score: 50 },
-            { name: "Player 3", score: 40 },
-            
-        ],
-    }
 
-}
 
 const LeaderboardElement = () => {
     const { gameId } = useParams(); 
-    const game = leaderboardData[gameId];
+    const game = gameData[gameId];
 
     if (!game) {
         return <div>Game not found</div>;
