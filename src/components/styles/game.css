@@ -173,7 +173,6 @@
 
 
 .image-container{
-    margin-bottom: 1rem;
     margin-top: 1rem;
     display: flex;
     justify-content: center;
@@ -181,7 +180,7 @@
 }
 
 .game-image {
-    max-width: 80vw;
+    max-width: 98.99vw;
 }
 
 .game-image:hover {

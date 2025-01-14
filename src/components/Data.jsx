@@ -10,7 +10,9 @@ import casperGhost from '../assets/images/casper-ghost.jpg'
 import lostMonkey from '../assets/images/lost-monkey.jpg'
 
 import game3IMG from '../assets/images/photo-tagging-hard.jpg'
-
+import garfield from '../assets/images/garfield.jpg'
+import jimmy from '../assets/images/jimmy.jpg'
+import waldo from '../assets/images/waldo.jpg'
 
 // mock data
 const gameData = {
@@ -82,19 +84,19 @@ const gameData = {
         objective: "Objective",
         targets: {
             target1: {
-                name: "Lazy Linda",
-                image: lazyLinda,
-                coordinates: { x: 1035, y: 868 },
+                name: "Garfield",
+                image: garfield,
+                coordinates: { x: 3182.7, y: 1040.2 },
             },
             target2: {
-                name: "Casper Ghost",
-                image: casperGhost,
-                coordinates: { x: 699, y: 1598 },
+                name: "Jimmy",
+                image: jimmy,
+                coordinates: { x: 966.3, y: 3357.7 },
             },
             target3: {
-                name: "Lost Monkey",
-                image: lostMonkey,
-                coordinates: { x: 84.1, y: 2163.3 },
+                name: "Waldo",
+                image: waldo,
+                coordinates: { x: 1595, y: 4580 },
             },
         },   
         leaderboard: [
