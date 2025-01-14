@@ -175,10 +175,17 @@
 .image-container{
     margin-bottom: 1rem;
     margin-top: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.game-image {
+    max-width: 80vw;
 }
 
 .game-image:hover {
-    cursor: url('../../assets/images/target1.png'), crosshair;
+    cursor: url('../../assets/images/target2.png'), crosshair;
 }
 
 .game-over-container{
@@ -213,6 +220,42 @@
 
 .game-over-btn {
     width: 6rem;
+}
+
+.result-data-capture-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.result-input-container {
+    display: flex;
+    flex-direction: column;
+    width: 10rem;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+input#username {
+    text-align: center;
+    border-radius: 8px;
+    height: 1.5rem;
+}
+
+.score-submit-btn {
+    border-radius: 8px;
+    width: 5rem;
+    height: 2rem;
+    background-color: #ffffff;
+    color: green;
+}
+
+.score-submit-btn:hover {
+    cursor: pointer;
+    background: green;
+    color: #ffffff
 }
 
 /* DROPDOWN MENU STYLES */

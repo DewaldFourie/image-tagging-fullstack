@@ -7,8 +7,15 @@
     align-items: center;
 }
 
-.preview-container {
+.link-container {
+    display: flex;
     width: 80%;
+    justify-content: space-around;
+    
+}
+
+.preview-container {
+    width: 20rem;
     height: 20rem;
     display: flex;
     justify-content: space-around;
@@ -29,5 +36,32 @@
     font-weight: bold;
     text-decoration: none;
     color: black;
+    background-size: cover;
 }
 
+.preview-element.easy {
+    background-image: url('../../assets/images/photo-tagging-easy.jpeg');
+}
+
+.preview-element.medium {
+    background-image: url('../../assets/images/photo-tagging-medium.jpeg');
+}
+
+.preview-element.hard {
+    
+}
+
+.preview-element-name-container {
+    background-color: #28282be7;
+    padding: 1rem;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+}
+
+.preview-element-name {
+    color: aliceblue;
+}
+
+a:-webkit-any-link {
+    text-decoration: none;
+}

@@ -7,22 +7,40 @@ function Home() {
     return (
         <div className="home-container">
             <h1>Home</h1>
-                <div className="preview-container">
-                    <div className="preview-element">
-                        <Link to="/game/g1">Warm-Up</Link>
+            <div className="link-container">
+                <Link to="/game/g1">
+                    <div className="preview-container">
+                        <div className="preview-element easy">
+                            <div className="preview-element-name-container">
+                                <span className="preview-element-name">Warm-Up</span>
+                            </div>
+                        </div>
                     </div>
-                    <div className="preview-element">
-                        <Link to="/game/g2">A Bit Tricky</Link>
+                </Link>
+                <Link to="/game/g2">
+                    <div className="preview-container">
+                        <div className="preview-element medium">
+                            <div className="preview-element-name-container">
+                                <span className="preview-element-name">A Bit Tricky</span>
+                            </div>
+                        </div>
                     </div>
-                    <div className="preview-element">
-                        <Link to="/game/g3">Beast Mode</Link>
+                </Link>
+                <Link to="/game/g3">
+                    <div className="preview-container">
+                        <div className="preview-element hard">
+                            <div className="preview-element-name-container">
+                                <span className="preview-element-name">Beast Mode</span>
+                            </div>
+                        </div>
                     </div>
-                </div>
-                <div className="leaderboard-container">
-                    <Link to="/leaderboard">Leaderboard</Link>
-                </div> 
+                </Link>
+            </div>
+
+            <div className="leaderboard-container">
+                <Link to="/leaderboard">Leaderboard</Link>
+            </div> 
         </div>
     );
 }
-
 export default Home;

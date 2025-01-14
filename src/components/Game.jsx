@@ -18,6 +18,7 @@ const Game = () => {
     const [locatedTargets, setLocatedTargets] = useState({});
     const [isGameWon, setIsGameWon] = useState(false);
     const [username, setUsername] = useState('');
+    const [gameLeaderboard, setGameLeaderboard] = useState(game.leaderboard);
 
 
     useEffect(() => {
@@ -126,7 +127,17 @@ const Game = () => {
     const handleFormSubmit = (e) => {
         e.preventDefault();
 
+        const newEntry = { name: username, score: timer };
+
+        const updatedLeaderboard = [...game.leaderboard, newEntry];
+        updatedLeaderboard.sort((a, b) => b.score - a.score);
+        setGameLeaderboard(updatedLeaderboard)
         console.log(`Player Name: ${username} Score: ${timer}`)
+        console.log("Updated Leaderboard:", updatedLeaderboard);
+        
+        setUsername('');
+
+        navigate(`/leaderboard/${gameId}`);
     }
     
 
@@ -198,11 +209,10 @@ const Game = () => {
             {isGameEnded && (
                 <div className="game-over-container">
                     <h2 className='game-over-header'>{isGameWon ? "Well done! You've found them all." : "Game Over"}</h2>
-                    <p className='result-time'>Final Timer: {timer}</p>
+                    <p className='result-time'>Time: {timer} s</p>
                     {isGameWon && (
                         <div className='result-data-capture-container'>
-                            <form action="" method="get" onSubmit={handleFormSubmit}>
-                                <label htmlFor="username">Player Name:</label>
+                            <form action="" method="get" onSubmit={handleFormSubmit} className='result-input-container'>
                                 <input 
                                     type="text" 
                                     id='username'
@@ -212,7 +222,7 @@ const Game = () => {
                                     required
                                 />
                                 <button type='submit' className='score-submit-btn'>
-                                    Submit Result
+                                    Submit
                                 </button>
                             </form>
                         </div>

@@ -4,6 +4,11 @@ import crazyChicken from '../assets/images/crazy-chicken.jpg'
 import runningRoman from '../assets/images/running-roman.jpg'
 import sandMan from '../assets/images/sand-man.jpg'
 
+import game2IMG from '../assets/images/photo-tagging-medium.jpeg' 
+import lazyLinda from '../assets/images/lazy-linda.jpg'
+import casperGhost from '../assets/images/casper-ghost.jpg'
+import lostMonkey from '../assets/images/lost-monkey.jpg'
+
 // mock data
 const gameData = {
     g1: {
@@ -39,12 +44,32 @@ const gameData = {
         name: "A Bit Tricky",
         difficulty: "Medium",
         description: "Description for Game 2",
+        image: game2IMG,
+        objective: "objective",
+        targets: {
+            target1: {
+                name: "Lazy Linda",
+                image: lazyLinda,
+                coordinates: { x: 1035, y: 868 },
+            },
+            target2: {
+                name: "Casper Ghost",
+                image: casperGhost,
+                coordinates: { x: 699, y: 1598 },
+            },
+            target3: {
+                name: "Lost Monkey",
+                image: lostMonkey,
+                coordinates: { x: 84.1, y: 2163.3 },
+            },
+        },   
         leaderboard: [
             { name: "Player 1", score: 80 },
             { name: "Player 2", score: 70 },
             { name: "Player 3", score: 60 },
             { name: "Player 4", score: 50 },
         ],
+        
     },
     g3: {
         name: "Beast Mode",
