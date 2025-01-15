@@ -9,7 +9,8 @@ const Game = () => {
     const navigate = useNavigate();
 
     const [isGameStarted, setIsGameStarted] = useState(false);
-    const [timer, setTimer] = useState(0);
+    const [minutes, setMinutes] = useState(0);
+    const [seconds, setSeconds] = useState(0);
     const [isGameEnded, setIsGameEnded] = useState(false);
     const [targetSticky, setTargetSticky] = useState(false);
     const [clickCoordinates, setClickCoordinates] = useState(null);
@@ -40,19 +41,32 @@ const Game = () => {
 
         if (isGameStarted){
             intervalId = setInterval(() => {
-                setTimer(prevTimer => prevTimer + 1);
+                setSeconds((prevSeconds) => {
+                    if (prevSeconds === 59) {
+                        if (minutes === 59) {
+                            // Stop the timer
+                            return prevSeconds;
+                        } else {
+                            setMinutes((prevMinutes) => prevMinutes + 1);
+                            return 0;
+                        }
+                    } else {
+                        return prevSeconds + 1
+                    }
+                });
             }, 1000);
         }
 
         return () => {
             clearInterval(intervalId);
         };
-    }, [isGameStarted]);
+    }, [isGameStarted, minutes]);
 
     const handleStartGame = () => {
         setIsGameStarted(true);
         setIsGameEnded(false);
-        setTimer(0);
+        setMinutes(0);
+        setSeconds(0);
         setLocatedTargets({})
         setDropdownVisible(false)
         setIsGameWon(false)
@@ -70,18 +84,31 @@ const Game = () => {
         if (isGameStarted) {
             const image = e.target;
             const rect = image.getBoundingClientRect();
-    
+        
             const clickX = e.clientX - rect.left;
             const clickY = e.clientY - rect.top;
             
             const normalizedX = (clickX / rect.width) * image.naturalWidth;
             const normalizedY = (clickY / rect.height) * image.naturalHeight;
     
+            // Calculate the default position
+            let dropdownX = e.clientX + window.scrollX + 45;
+            let dropdownY = e.clientY + window.scrollY;
+    
+            // Check if the dropdown would go out of view on the right
+            const dropdownWidth = 150; // Assume a width for the dropdown menu
+            const viewportWidth = window.innerWidth;
+    
+            if (dropdownX + dropdownWidth > viewportWidth) {
+                dropdownX = e.clientX + window.scrollX - dropdownWidth - 10; // Adjust to display to the left
+            }
+    
             setClickCoordinates({ x: normalizedX, y: normalizedY });
-            setDropdownPosition({ x: e.clientX + window.scrollX + 45, y: e.clientY + window.scrollY });
+            setDropdownPosition({ x: dropdownX, y: dropdownY });
             setDropdownVisible(true);
         }
-    }
+    };
+    
 
 
     const handleTargetSelect = (targetName) => {
@@ -127,12 +154,12 @@ const Game = () => {
     const handleFormSubmit = (e) => {
         e.preventDefault();
 
-        const newEntry = { name: username, score: timer };
+        const newEntry = { name: username, score: `${minutes}:${seconds}` };
 
         const updatedLeaderboard = [...game.leaderboard, newEntry];
         updatedLeaderboard.sort((a, b) => b.score - a.score);
         setGameLeaderboard(updatedLeaderboard)
-        console.log(`Player Name: ${username} Score: ${timer}`)
+        console.log(`Player Name: ${username} Score: ${newEntry.score}`)
         console.log("Updated Leaderboard:", updatedLeaderboard);
         
         setUsername('');
@@ -203,13 +230,13 @@ const Game = () => {
             </div>
             {isGameStarted ? (
                 <div className="timer-container">
-                    <h2>Timer: {timer}</h2>
+                    <h2 className='timer-text'>Timer: {String(minutes).padStart(2, '0')}:{String(seconds).padStart(2, '0')}</h2>
                 </div>
             ) : null}
             {isGameEnded && (
                 <div className="game-over-container">
                     <h2 className='game-over-header'>{isGameWon ? "Well done! You've found them all." : "Game Over"}</h2>
-                    <p className='result-time'>Time: {timer} s</p>
+                    <p className='result-time'>Timer: {String(minutes).padStart(2, '0')}:{String(seconds).padStart(2, '0')}</p>
                     {isGameWon && (
                         <div className='result-data-capture-container'>
                             <form action="" method="get" onSubmit={handleFormSubmit} className='result-input-container'>
