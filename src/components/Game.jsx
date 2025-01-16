@@ -1,5 +1,5 @@
 import '../components/styles/game.css'
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, useLocation } from "react-router-dom";
 import { useState , useEffect } from "react";
 import gameData from './Data'
 
@@ -7,6 +7,7 @@ const Game = () => {
     const { gameId } = useParams();
     const game  = gameData[gameId];
     const navigate = useNavigate();
+    const location = useLocation();
 
     const [isGameStarted, setIsGameStarted] = useState(false);
     const [minutes, setMinutes] = useState(0);
@@ -21,6 +22,11 @@ const Game = () => {
     const [username, setUsername] = useState('');
     const [gameLeaderboard, setGameLeaderboard] = useState(game.leaderboard);
 
+
+    
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, [location]);
 
     useEffect(() => {
         const handleScroll = () => {
@@ -229,8 +235,8 @@ const Game = () => {
                 </div>
             </div>
             {isGameStarted ? (
-                <div className="timer-container">
-                    <h2 className='timer-text'>Timer: {String(minutes).padStart(2, '0')}:{String(seconds).padStart(2, '0')}</h2>
+                <div className={`timer-container ${targetSticky ? 'sticky' : ''}`}>
+                    <h2 className='timer-text'>{String(minutes).padStart(2, '0')}:{String(seconds).padStart(2, '0')}</h2>
                 </div>
             ) : null}
             {isGameEnded && (

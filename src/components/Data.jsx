@@ -14,14 +14,14 @@ import garfield from '../assets/images/garfield.jpg'
 import jimmy from '../assets/images/jimmy.jpg'
 import waldo from '../assets/images/waldo.jpg'
 
-// mock data
+// mock data 
 const gameData = {
     g1: {
         name: "Warm-Up",
         difficulty: "Easy",
         description: "Get comfortable with this level on how to find the elusive characters & give your eagle eye a test run.",
         image: game1IMG,
-        objective: "Find the elusive characters",
+        objective: "Find The Elusive Characters:",
         targets: {
             target1: {
                 name: "Crazy Chicken",
@@ -40,17 +40,17 @@ const gameData = {
             },
         },
         leaderboard: [
-            { name: "Player 1", score: 50 },
-            { name: "Player 2", score: 40 },
-            { name: "Player 3", score: 30 },
+            { name: "Player 1", score: '01:10' },
+            { name: "Player 2", score: '00:46' },
+            { name: "Player 3", score: '00:39' },
         ],
     },
     g2: {
         name: "A Bit Tricky",
         difficulty: "Medium",
-        description: "Description for Game 2",
+        description: "Challenge yourself with trickier hides. Stay sharp—things are heating up!",
         image: game2IMG,
-        objective: "objective",
+        objective: "Spot The Characters Hiding:",
         targets: {
             target1: {
                 name: "Lazy Linda",
@@ -69,19 +69,19 @@ const gameData = {
             },
         },   
         leaderboard: [
-            { name: "Player 1", score: 80 },
-            { name: "Player 2", score: 70 },
-            { name: "Player 3", score: 60 },
-            { name: "Player 4", score: 50 },
+            { name: "Player 1", score: '02:16' },
+            { name: "Player 2", score: '05:26' },
+            { name: "Player 3", score: '11:29' },
+            { name: "Player 4", score: '03:12' },
         ],
         
     },
     g3: {
         name: "Beast Mode",
         difficulty: "Hard",
-        description: "Description for Game 3",
+        description: "Only for the brave! The ultimate test of focus and precision awaits.",
         image: game3IMG,
-        objective: "Objective",
+        objective: "Find The Hiding Experts:",
         targets: {
             target1: {
                 name: "Garfield",
@@ -100,9 +100,9 @@ const gameData = {
             },
         },   
         leaderboard: [
-            { name: "Player 1", score: 60 },
-            { name: "Player 2", score: 50 },
-            { name: "Player 3", score: 40 },
+            { name: "Player 1", score: '24:16' },
+            { name: "Player 2", score: '10:46' },
+            { name: "Player 3", score: '09:27' },
         ],
     },
 };

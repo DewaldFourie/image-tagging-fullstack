@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
 import gameData from "./Data";
 
-// mock data
+
 
 
 const LeaderboardElement = () => {

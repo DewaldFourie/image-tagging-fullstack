@@ -51,7 +51,8 @@
 
 .start-end-btn.start:hover {
     background: green;
-    color: #ffffff
+    color: #ffffff;
+    border-color: #ffffff;
 }
 
 .start-end-btn.end {
@@ -63,6 +64,7 @@
 .start-end-btn.end:hover {
     background-color: rgb(169, 1, 1);
     color: #ffffff;
+    border-color: #ffffff;
 }
 
 .start-end-btn.hidden {
@@ -123,7 +125,7 @@
 .target-container{
     display: flex;
     gap: 2rem;
-    background-color: #28282B;
+    background-color: #28282b;
     padding: 0.5rem;
     width: fit-content;
     border-radius: 10px;
@@ -146,6 +148,7 @@
     object-fit: cover;
     border: 2px solid transparent;
     transition: border-color 0.3s;
+    
 }
 
 .target-image.located {
@@ -166,13 +169,27 @@
 
 .timer-container{
     margin-bottom: 1rem;
-    position: fixed;
+    position: absolute;
     right: 1.5rem;
-    top: 60px;
+    top: 125px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    border-radius: 10px;
+    width: 7rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.timer-container.sticky {
+    position: fixed;
+    top: 5.5rem;
+    background-color: #28282b;
+    color: #ffffff;
 }
 
 .timer-text {
-    
+    margin: 0;
 }
 
 
@@ -223,7 +240,42 @@
 
 .game-over-btn {
     width: 6rem;
+    height: 2rem;
+    border-radius: 10px;
+    transition: all 0.8s ease-in-out; 
+    font-weight: bold;
+    text-align: center;
+    display: inline-block;
 }
+
+.play-again-btn {
+    color: green;
+    background-color: rgb(254, 255, 252);
+    border: 1px solid green;
+    transition: background-color 0.8s ease, color 0.8s ease, border 0.8s ease;
+}
+
+.play-again-btn:hover {
+    background-color: green;
+    color: #ffffff;
+    border: 1px solid #ffffff; 
+    cursor: pointer;
+}
+
+.quit-btn {
+    background-color: #ffffff;
+    color: rgb(169, 0, 0);
+    border: 1px solid rgb(169, 1, 1);
+    transition: background-color 0.8s ease, color 0.8s ease, border 0.8s ease;
+}
+
+.quit-btn:hover {
+    background-color: rgb(169, 1, 1);
+    color: #ffffff;
+    border: 1px solid #ffffff; 
+    cursor: pointer;
+}
+
 
 .result-data-capture-container {
     display: flex;
