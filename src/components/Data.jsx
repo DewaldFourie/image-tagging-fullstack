@@ -18,7 +18,7 @@ import waldo from '../assets/images/waldo.jpg'
 const gameData = {
     g1: {
         name: "Warm-Up",
-        difficulty: "Easy",
+        difficulty: "easy",
         description: "Get comfortable with this level on how to find the elusive characters & give your eagle eye a test run.",
         image: game1IMG,
         objective: "Find The Elusive Characters:",
@@ -47,7 +47,7 @@ const gameData = {
     },
     g2: {
         name: "A Bit Tricky",
-        difficulty: "Medium",
+        difficulty: "medium",
         description: "Challenge yourself with trickier hides. Stay sharp—things are heating up!",
         image: game2IMG,
         objective: "Spot The Characters Hiding:",
@@ -78,7 +78,7 @@ const gameData = {
     },
     g3: {
         name: "Beast Mode",
-        difficulty: "Hard",
+        difficulty: "hard",
         description: "Only for the brave! The ultimate test of focus and precision awaits.",
         image: game3IMG,
         objective: "Find The Hiding Experts:",

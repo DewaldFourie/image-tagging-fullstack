@@ -1,11 +1,10 @@
-import { useParams} from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from 'axios';
 import gameData from "./Data";
 import './styles/leaderboardElement.css'
+import PropTypes from 'prop-types';
 
-const LeaderboardElement = () => {
-    const { gameId } = useParams(); 
+const LeaderboardElement = ({ gameId }) => {
     const [leaderboard, setLeaderboard] = useState([]);
     const game = gameData[gameId];
 
@@ -27,7 +26,13 @@ const LeaderboardElement = () => {
 
     return (
         <div className="leaderboard-element-container">
-            <h1>{game.name}</h1>
+            <div className="leaderboard-element-header-container">
+                <div className={`leaderboard-element-header-container ${game.difficulty}`}>
+                    <div className="leaderboard-element-header-title-container">
+                        <span className="leaderboard-element-header-title">{game.name}</span>
+                    </div>
+                </div>
+            </div>
             <p>{game.description}</p>
             <ul>
                 {leaderboard.map((player, index) => (
@@ -39,6 +44,10 @@ const LeaderboardElement = () => {
         </div>
     );
 
+}
+
+LeaderboardElement.propTypes = {
+    gameId: PropTypes.string.isRequired
 }
 
 export default LeaderboardElement;

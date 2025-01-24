@@ -160,8 +160,9 @@ const Game = () => {
     const handleFormSubmit = (e) => {
         e.preventDefault();
 
-        const newEntry = { name: username, score: `${minutes}:${seconds}` };
-        console.log(`Player Name: ${newEntry.username} Score: ${newEntry.score}`)
+        const totalSeconds = minutes * 60 + seconds;
+        const newEntry = { name: username, score: totalSeconds };
+        console.log(`Player Name: ${newEntry.username} Score: ${minutes}:${seconds}`);
 
         const newScoreData = {
             game_id: gameId,
@@ -173,7 +174,7 @@ const Game = () => {
             .then((response) => {
                 console.log(response.data);
                 setUsername('');
-                navigate(`/leaderboard/${gameId}`);
+                navigate(`/leaderboard`);
             })
             .catch((error) => {
                 console.error(error);       

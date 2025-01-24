@@ -3,6 +3,29 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin: 20px;
+    margin-top: 5rem;
     height: 100vh;
+}
+
+.leaderboard-container h1 {
+    margin-bottom: 10px;
+}
+
+.leaderboard-list-container {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.leaderboard-list-element {
+    display: flex;
+    width: 33.33%;
+    height: 100%;
+    background-color: beige;
+    border: 1px solid black;
+    margin: 8px;
+    border-radius: 25px;
 }

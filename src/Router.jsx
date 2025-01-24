@@ -5,7 +5,6 @@ import Leaderboard from "./components/Leaderboard";
 import Base from "./Base";
 import About from "./components/About";
 import Game from "./components/Game";
-import LeaderboardElement from "./components/LeaderboardElement";
 
 const Router = () => {
     const router = createBrowserRouter([

@@ -4,21 +4,57 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        margin: 20px;
-        height: 100vh;
+        width: 100%;
+        height: 100%;
     }
     
-    .leaderboard-element-container h1 {
-        font-size: 24px;
-        margin-bottom: 10px;
-    }
+.leaderboard-element-container h1 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
     
-    .leaderboard-element-container p {
-        font-size: 16px;
-        margin-bottom: 20px;
-    }
+.leaderboard-element-container p {
+    font-size: 16px;
+    margin-bottom: 20px;
+}
     
-    .leaderboard-element-container ul {
-        list-style: none;
-        padding: 0;
-    }
+.leaderboard-element-container ul {
+    list-style: none;
+    padding: 0;
+}
+
+.leaderboard-element-header-container {
+    height: 10rem;
+    width: 100%;
+    background-size: cover;
+    background-position: center;
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.leaderboard-element-header-container.easy {
+    background-image: url('../../assets/images/photo-tagging-easy.jpeg');
+}
+
+.leaderboard-element-header-container.medium {
+    background-image: url('../../assets/images/photo-tagging-medium.jpeg');
+}
+
+.leaderboard-element-header-container.hard {
+    background-image: url('../../assets/images/photo-tagging-hard.jpg');
+}
+
+.leaderboard-element-header-title-container {
+    background-color: #28282be7;
+    padding: 1rem;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+    color: aliceblue;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 8rem;
+}
