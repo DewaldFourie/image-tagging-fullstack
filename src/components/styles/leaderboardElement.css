@@ -1,0 +1,24 @@
+
+
+.leaderboard-element-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 20px;
+        height: 100vh;
+    }
+    
+    .leaderboard-element-container h1 {
+        font-size: 24px;
+        margin-bottom: 10px;
+    }
+    
+    .leaderboard-element-container p {
+        font-size: 16px;
+        margin-bottom: 20px;
+    }
+    
+    .leaderboard-element-container ul {
+        list-style: none;
+        padding: 0;
+    }

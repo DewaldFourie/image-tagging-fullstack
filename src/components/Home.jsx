@@ -37,7 +37,7 @@ function Home() {
                 </Link>
             </div>
 
-            <div className="leaderboard-container">
+            <div className="leaderboard-link-container">
                 <Link to="/leaderboard">Leaderboard</Link>
             </div> 
         </div>

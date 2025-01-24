@@ -1,9 +1,11 @@
 
 import { Link } from "react-router-dom";
+import './styles/leaderboard.css'
+import './LeaderboardElement'
 
 function Leaderboard() {
     return (
-        <div>
+        <div className="leaderboard-container">
             <h1>Leaderboard</h1>
             <ul>
                 <li>

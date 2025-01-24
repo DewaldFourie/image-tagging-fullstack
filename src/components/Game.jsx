@@ -2,6 +2,7 @@ import '../components/styles/game.css'
 import { useParams, useNavigate, useLocation } from "react-router-dom";
 import { useState , useEffect } from "react";
 import gameData from './Data'
+import axios from 'axios';
 
 const Game = () => {
     const { gameId } = useParams();
@@ -20,7 +21,6 @@ const Game = () => {
     const [locatedTargets, setLocatedTargets] = useState({});
     const [isGameWon, setIsGameWon] = useState(false);
     const [username, setUsername] = useState('');
-    const [gameLeaderboard, setGameLeaderboard] = useState(game.leaderboard);
 
 
     
@@ -161,16 +161,25 @@ const Game = () => {
         e.preventDefault();
 
         const newEntry = { name: username, score: `${minutes}:${seconds}` };
+        console.log(`Player Name: ${newEntry.username} Score: ${newEntry.score}`)
 
-        const updatedLeaderboard = [...game.leaderboard, newEntry];
-        updatedLeaderboard.sort((a, b) => b.score - a.score);
-        setGameLeaderboard(updatedLeaderboard)
-        console.log(`Player Name: ${username} Score: ${newEntry.score}`)
-        console.log("Updated Leaderboard:", updatedLeaderboard);
+        const newScoreData = {
+            game_id: gameId,
+            player_name: newEntry.name,
+            score: newEntry.score,
+        }
+
+        axios.post('https://wilful-ninetta-dewaldfourie-4987cbf4.koyeb.app/api/leaderboards', newScoreData)
+            .then((response) => {
+                console.log(response.data);
+                setUsername('');
+                navigate(`/leaderboard/${gameId}`);
+            })
+            .catch((error) => {
+                console.error(error);       
+            });
         
-        setUsername('');
 
-        navigate(`/leaderboard/${gameId}`);
     }
     
 

@@ -29,10 +29,6 @@ const Router = () => {
                 {
                     path: "/game/:gameId",
                     element: <Game />
-                },
-                {
-                    path: "/leaderboard/:gameId",
-                    element: <LeaderboardElement />
                 }
             ],
         },
