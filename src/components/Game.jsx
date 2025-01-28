@@ -21,6 +21,7 @@ const Game = () => {
     const [locatedTargets, setLocatedTargets] = useState({});
     const [isGameWon, setIsGameWon] = useState(false);
     const [username, setUsername] = useState('');
+    const [scoreSubmitted, setScoreSubmitted] = useState(false);
 
 
     
@@ -160,6 +161,7 @@ const Game = () => {
     const handleFormSubmit = (e) => {
         e.preventDefault();
 
+        setScoreSubmitted(true);
         const totalSeconds = minutes * 60 + seconds;
         const newEntry = { name: username, score: totalSeconds };
         console.log(`Player Name: ${newEntry.username} Score: ${minutes}:${seconds}`);
@@ -183,16 +185,6 @@ const Game = () => {
 
     }
     
-
-    // TEMPORARY CODE
-    const handleTargetCapture = () => {
-        if (clickCoordinates) {
-            console.log(
-                `Coordinates for target: (${clickCoordinates.x}, ${clickCoordinates.y})`
-            );
-            // Use this data to update your gameData targets
-        }
-    };
 
 
     if (!game) {
@@ -252,7 +244,7 @@ const Game = () => {
             {isGameEnded && (
                 <div className="game-over-container">
                     <h2 className='game-over-header'>{isGameWon ? "Well done! You've found them all." : "Game Over"}</h2>
-                    <p className='result-time'>Timer: {String(minutes).padStart(2, '0')}:{String(seconds).padStart(2, '0')}</p>
+                    <p className='result-time'>Score: {String(minutes).padStart(2, '0')}:{String(seconds).padStart(2, '0')}</p>
                     {isGameWon && (
                         <div className='result-data-capture-container'>
                             <form action="" method="get" onSubmit={handleFormSubmit} className='result-input-container'>
@@ -263,9 +255,13 @@ const Game = () => {
                                     onChange={(e) => setUsername(e.target.value)}
                                     placeholder='Player Name'
                                     required
+                                    
                                 />
-                                <button type='submit' className='score-submit-btn'>
-                                    Submit
+                                <button type='submit' 
+                                        className='score-submit-btn'
+                                        disabled={scoreSubmitted}
+                                >
+                                    {scoreSubmitted ? 'Score Added' : 'Submit'}
                                 </button>
                             </form>
                         </div>
@@ -309,9 +305,6 @@ const Game = () => {
                         })}
                     </ul>
                 </div>
-            )}
-            {clickCoordinates && (
-                <button onClick={handleTargetCapture}>Capture Coordinates</button>
             )}
         </div>
     );

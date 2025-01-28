@@ -297,11 +297,12 @@ input#username {
     text-align: center;
     border-radius: 8px;
     height: 1.5rem;
+    width: 10rem;
 }
 
 .score-submit-btn {
     border-radius: 8px;
-    width: 5rem;
+    width: 10rem;
     height: 2rem;
     background-color: #ffffff;
     color: green;

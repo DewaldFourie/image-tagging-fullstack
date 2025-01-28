@@ -38,7 +38,7 @@ function Home() {
             </div>
 
             <div className="leaderboard-link-container">
-                <Link to="/leaderboard">Leaderboard</Link>
+                <Link to="/leaderboard">View Leaderboard ➤</Link>
             </div> 
         </div>
     );
