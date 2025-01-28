@@ -3,9 +3,10 @@ import axios from 'axios';
 import gameData from "./Data";
 import './styles/leaderboardElement.css'
 import PropTypes from 'prop-types';
+import loader from '../assets/images/42.gif'
 
 const LeaderboardElement = ({ gameId }) => {
-    const [leaderboard, setLeaderboard] = useState([]);
+    const [leaderboard, setLeaderboard] = useState(null);
     const game = gameData[gameId];
 
     useEffect(() => {
@@ -20,9 +21,6 @@ const LeaderboardElement = ({ gameId }) => {
         fetchLeaderboard();
     }, [gameId]);
 
-    if (!game || !leaderboard) {
-        return <div>Loading...</div>;
-    }
 
     return (
         <div className="leaderboard-element-container">
@@ -33,17 +31,30 @@ const LeaderboardElement = ({ gameId }) => {
                     </div>
                 </div>
             </div>
-            <p>{game.description}</p>
-            <ul>
-                {leaderboard.map((player, index) => (
-                    <li key={index}>
-                        {player.player_name} - {player.score}
-                    </li>
-                ))}
-            </ul>
+            <div className="leaderboard-element-score-container">
+                {leaderboard === null ? (
+                    <div className="leaderboard-loading">
+                        <img src={loader} alt="Loading..." />
+                    </div>
+                ) : (
+                    <div className="leaderboard-table">
+                        {leaderboard.map((player, index) => (
+                            <div
+                                key={index}
+                                className={`leaderboard-row ${index === 0 ? "leaderboard-first-place" : ""}`}
+                            >
+                                <div className="leaderboard-rank">
+                                    {index === 0 ? "🥇" : index === 1 ? "🥈" : index === 2 ? "🥉" : index + 1}
+                                </div>
+                                <div className="leaderboard-name">{player.player_name}</div>
+                                <div className="leaderboard-score">{String(Math.floor(player.score / 60)).padStart(2, '0')}:{String(player.score % 60).padStart(2, '0')}</div>
+                            </div>
+                        ))}
+                    </div>
+                )}
+            </div>
         </div>
     );
-
 }
 
 LeaderboardElement.propTypes = {

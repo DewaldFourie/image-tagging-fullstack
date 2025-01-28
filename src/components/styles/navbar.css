@@ -27,7 +27,6 @@
     position: fixed;
     color: white;
     z-index: 2;
-
 }
 
 .container {
@@ -74,6 +73,9 @@
     border-bottom: 2px solid #000000;
 }
 
+.navbar.sticky .nav-links a.active {
+    border-bottom: 2px solid #ffffff;
+}
 
 .mobile-menu-icon {
     display: none;
