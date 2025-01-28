@@ -1,6 +1,6 @@
 import '../components/styles/game.css'
 import { useParams, useNavigate, useLocation } from "react-router-dom";
-import { useState , useEffect } from "react";
+import { useState , useEffect, useRef } from "react";
 import gameData from './Data'
 import axios from 'axios';
 
@@ -77,6 +77,7 @@ const Game = () => {
         setLocatedTargets({})
         setDropdownVisible(false)
         setIsGameWon(false)
+        window.scrollTo({ top: 0, behavior: 'smooth' });
     };
     
     const handleEndGame = () => {
@@ -182,9 +183,21 @@ const Game = () => {
                 console.error(error);       
             });
         
-
     }
     
+    const startBtnRef = useRef(null);
+
+    useEffect(() => {
+        const intervalId = setInterval(() => {
+            if (!isGameStarted) {
+                startBtnRef.current.classList.add('wiggle');
+                setTimeout(() => {
+                    startBtnRef.current.classList.remove('wiggle');
+                }, 1000);
+            }
+        }, 2000);
+        return () => clearInterval(intervalId);
+    }, [isGameStarted]);
 
 
     if (!game) {
@@ -196,8 +209,9 @@ const Game = () => {
             <div className='game-top-container'>
                 <div className={`button-container ${targetSticky ? 'sticky' : ''}`}>
                     <button
-                        className={`start-end-btn start`}
+                        className={`start-end-btn start ${!isGameStarted ? 'wiggle' : ''}`}
                         onClick={handleStartGame}
+                        ref={startBtnRef}
                     >
                         {isGameStarted ? "Restart" : "Start"}
                     </button>

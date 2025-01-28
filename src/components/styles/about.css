@@ -20,9 +20,8 @@
 }
 
 .about-title {
-    margin: 0;
     font-weight: bold;
-
+    margin-bottom: 1rem;
 }
 
 .about-text {
@@ -32,5 +31,9 @@
 
 .about-subtitle {
     font-weight: bold;
-    margin: 0;
+    margin-bottom: 1rem;
+}
+
+.{
+    
 }
