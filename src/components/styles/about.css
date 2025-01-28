@@ -1,0 +1,36 @@
+.about-page-container {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.about-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-width: 800px;
+    margin: 100px auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.about-title {
+    margin: 0;
+    font-weight: bold;
+
+}
+
+.about-text {
+    margin: 0;
+    text-align: center;
+}
+
+.about-subtitle {
+    font-weight: bold;
+    margin: 0;
+}
