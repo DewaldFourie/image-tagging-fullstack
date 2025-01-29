@@ -6,7 +6,7 @@ import './styles/home.css'
 function Home() {
     return (
         <div className="home-container">
-            <h1>Home</h1>
+            <h1>Select Theme:</h1>
             <div className="link-container">
                 <Link to="/game/g1">
                     <div className="preview-container">
