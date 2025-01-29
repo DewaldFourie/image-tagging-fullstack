@@ -5,12 +5,12 @@ const About = () => {
     return (
         <div className='about-page-container'>
             <div className="about-container">
-                <h1 className="about-title">About Image Tag</h1>
+                <h1 className="about-title">About Findr</h1>
                 <p className="about-text">
-                    Image Tag is a fun and challenging game where you have to find and tag characters in a scene. The game starts off easy, but gets progressively harder as you progress through the levels.
+                    Findr is a fun and challenging game where you have to find and tag characters in a scene. The game starts off easy, but gets progressively harder as you progress through the levels.
                 </p>
                 <p className="about-text">
-                    The game is similar to "Where's Waldo?" where you have to find Waldo in a crowded scene. But in Image Tag, you have to find and tag multiple different characters in a scene.
+                    The game is similar to "Where's Waldo?" where you have to find Waldo in a crowded scene. But in Findr, you have to find and tag multiple different characters in a scene.
                 </p>
                 <h2 className="about-subtitle">How it Works</h2>
                 <p className="about-text">

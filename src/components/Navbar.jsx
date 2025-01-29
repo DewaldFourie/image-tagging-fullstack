@@ -30,7 +30,7 @@ function Navbar() {
         <nav className={`navbar ${isNavbarSticky ? 'sticky' : ''} ${isMobileMenuOpen ? 'mobile-menu-open' : ''}`}>
             <div className="container">
                 <div className={`brand-name ${isNavbarSticky ? 'sticky' : ''}`}>
-                    <NavLink to="/">APP</NavLink>
+                    <NavLink to="/">Findr</NavLink>
                 </div>
                 <div className={`nav-links ${isMobileMenuOpen ? 'mobile' : '' } ${isNavbarSticky ? 'sticky' : ''}`}>
                     <NavLink to="/" exact activeClassName="active" onClick={toggleMobileMenu}>

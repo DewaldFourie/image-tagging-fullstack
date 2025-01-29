@@ -321,9 +321,9 @@ input#username {
 
 .dropdown-menu {
     position: absolute;
-    background-color: white;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+    background-color: #28282b;
+    border: 1px solid #000000;
+    border-radius: 25px;
     padding: 10px;
     z-index: 1000;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -333,6 +333,7 @@ input#username {
     list-style: none;
     padding: 0;
     margin: 0;
+    
 }
 
 .dropdown-menu li {
@@ -340,10 +341,13 @@ input#username {
     align-items: center;
     cursor: pointer;
     padding: 5px;
+    color: #ffffff;
+    gap: 2px;
 }
 
 .dropdown-menu li:hover {
-    background-color: #f0f0f0;
+    border: 1px solid #ffffff;
+    border-radius: 15px;
 }
 
 .dropdown-target-image {
