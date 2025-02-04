@@ -1,8 +1,13 @@
-
+import { useEffect } from "react";
 import './styles/leaderboard.css'
 import LeaderboardElement from './LeaderboardElement'
 
 function Leaderboard() {
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
+
     return (
         <div className="leaderboard-container">
             <h1>Leaderboard</h1>

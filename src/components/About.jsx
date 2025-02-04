@@ -1,6 +1,11 @@
+import { useEffect } from "react";
 import '../components/styles/about.css'
 
 const About = () => {
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
     
     return (
         <div className='about-page-container'>

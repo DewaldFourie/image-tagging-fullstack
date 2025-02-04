@@ -25,7 +25,7 @@
 }
 
 .preview-element {
-    border: 1px solid black;
+    border: 1px solid #28282be7;
     border-radius: 10px;
     height: 100%;
     width: 100%;
@@ -37,6 +37,7 @@
     text-decoration: none;
     color: black;
     background-size: cover;
+    box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
 }
 
 .preview-element.easy {

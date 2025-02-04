@@ -1,9 +1,17 @@
-
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import './styles/home.css'
 
 
+
+
 function Home() {
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
+
+
     return (
         <div className="home-container">
             <h1>Select Theme:</h1>
