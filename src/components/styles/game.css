@@ -309,12 +309,24 @@ input#username {
     height: 2rem;
     background-color: #ffffff;
     color: green;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .score-submit-btn:hover {
     cursor: pointer;
     background: green;
     color: #ffffff
+}
+
+.submit-loading-icon {
+    height: 1.8rem;
+}
+
+.score-submit-btn.disabled-submit-btn:hover {
+    background-color: #ffffff;
+    cursor: default;
 }
 
 /* DROPDOWN MENU STYLES */

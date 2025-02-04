@@ -3,6 +3,7 @@ import { useParams, useNavigate, useLocation } from "react-router-dom";
 import { useState , useEffect, useRef } from "react";
 import gameData from './Data'
 import axios from 'axios';
+import submitLoading from '../assets/images/submitLoading.gif'
 
 const Game = () => {
     const { gameId } = useParams();
@@ -177,7 +178,7 @@ const Game = () => {
             .then((response) => {
                 console.log(response.data);
                 setUsername('');
-                navigate(`/leaderboard`);
+                // navigate(`/leaderboard`);
             })
             .catch((error) => {
                 console.error(error);       
@@ -189,7 +190,7 @@ const Game = () => {
 
     useEffect(() => {
         const intervalId = setInterval(() => {
-            if (!isGameStarted) {
+            if (!isGameStarted && !isGameWon) {
                 startBtnRef.current.classList.add('wiggle');
                 setTimeout(() => {
                     startBtnRef.current.classList.remove('wiggle');
@@ -212,6 +213,7 @@ const Game = () => {
                         className={`start-end-btn start ${!isGameStarted ? 'wiggle' : ''}`}
                         onClick={handleStartGame}
                         ref={startBtnRef}
+                        disabled={dropdownVisible || isGameWon}
                     >
                         {isGameStarted ? "Restart" : "Start"}
                     </button>
@@ -272,10 +274,14 @@ const Game = () => {
                                     
                                 />
                                 <button type='submit' 
-                                        className='score-submit-btn'
+                                        className={`score-submit-btn ${scoreSubmitted ? 'disabled-submit-btn' : ''}`}
                                         disabled={scoreSubmitted}
                                 >
-                                    {scoreSubmitted ? 'Score Added' : 'Submit'}
+                                    {scoreSubmitted ? (
+                                        <img className='submit-loading-icon' src={submitLoading} alt="Submitted" />
+                                    ) : (
+                                        'Submit'
+                                    )}
                                 </button>
                             </form>
                         </div>
