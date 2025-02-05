@@ -41,6 +41,8 @@
     transform: translateY(0);
     opacity: 1;
     visibility: visible;
+    font-family: "Bangers";
+    font-size: 24px;
 }
 
 .start-end-btn.start {
@@ -56,13 +58,13 @@
 .start-end-btn.start:hover {
     background: green;
     color: #ffffff;
-    border-color: #ffffff;
+    
 }
 
 .start-end-btn.end {
     background-color: #ffffff;
     color: rgb(169, 0, 0);
-    border: 1px solid rgb(169, 1, 1);
+    
 }
 
 .start-end-btn.end:hover {
@@ -95,6 +97,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    color:#ffffffd8
 }
 
 .game-header-container.sticky {
@@ -105,11 +108,13 @@
 .game-header {
     margin-top: 0;
     margin-bottom: 1rem;
+    font-family: "Luckiest Guy";
 }
 
 .game-description {
     margin: 0;
     text-align: center;
+    font-family: "Lato";
 }
 
 .instructions-container {
@@ -123,12 +128,14 @@
 .game-instructions {
     margin-top: 0;
     margin-bottom: 1rem;
+    color:#ffffffd8;
+    font-family: "Lato";
 }
 
 .target-container{
     display: flex;
     gap: 2rem;
-    background-color: #28282b;
+    background-color: #000000d2;
     padding: 0.5rem;
     width: fit-content;
     border-radius: 10px;
@@ -137,6 +144,7 @@
 .target-container.sticky {
     position: fixed;
     top: 5rem;
+    background-color: #000000d2;
 }
 
 .target-wrapper {
@@ -182,17 +190,20 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    color: rgb(255, 255, 255);
+    font-size: 24px;
 }
 
 .timer-container.sticky {
     position: fixed;
     top: 5.5rem;
-    background-color: #28282b;
+    background-color: #000000d2;
     color: #ffffff;
 }
 
 .timer-text {
     margin: 0;
+    font-family: "Bangers";
 }
 
 
@@ -216,7 +227,7 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: #28282bda;
+    background-color: #000000da;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -229,11 +240,17 @@
 .game-over-header {
     color: aliceblue;
     text-align: center;
+    font-family: "Bangers";
+    font-size: 40px;
+    margin-bottom: 1rem;
 }
 
 .result-time {
     align-self: center;
     color: aliceblue;
+    font-family: "Lato";
+    margin-bottom: 2rem;
+    font-size: 20px;
 }
 
 .game-over-btn-container {
@@ -249,6 +266,8 @@
     font-weight: bold;
     text-align: center;
     display: inline-block;
+    font-family: "Bangers";
+    font-size: 20px;
 }
 
 .play-again-btn {
@@ -260,8 +279,7 @@
 
 .play-again-btn:hover {
     background-color: green;
-    color: #ffffff;
-    border: 1px solid #ffffff; 
+    color: #ffffff; 
     cursor: pointer;
 }
 
@@ -275,7 +293,6 @@
 .quit-btn:hover {
     background-color: rgb(169, 1, 1);
     color: #ffffff;
-    border: 1px solid #ffffff; 
     cursor: pointer;
 }
 
@@ -301,6 +318,7 @@ input#username {
     border-radius: 8px;
     height: 1.5rem;
     width: 10rem;
+    font-family: "Lato";
 }
 
 .score-submit-btn {
@@ -312,6 +330,8 @@ input#username {
     display: flex;
     justify-content: center;
     align-items: center;
+    font-family: "Bangers";
+    font-size: 20px;
 }
 
 .score-submit-btn:hover {
@@ -333,9 +353,8 @@ input#username {
 
 .dropdown-menu {
     position: absolute;
-    background-color: #28282b;
-    border: 1px solid #000000;
-    border-radius: 25px;
+    background-color: #010a26f3;
+    border-radius: 20px;
     padding: 10px;
     z-index: 1000;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -355,10 +374,12 @@ input#username {
     padding: 5px;
     color: #ffffff;
     gap: 2px;
+    font-family: "Lato";
+    font-size: 15px;
 }
 
 .dropdown-menu li:hover {
-    border: 1px solid #ffffff;
+    border: 2px solid #004eea;
     border-radius: 15px;
 }
 

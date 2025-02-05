@@ -77,6 +77,25 @@
     overflow-x: hidden;
 }
 
+/* Custom scrollbar */
+::-webkit-scrollbar {
+    width: 5px;
+}
+
+::-webkit-scrollbar-track {
+    background: #000000;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #1900a4;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: #2100d9;
+    cursor: pointer;
+}
+
 .leaderboard-element-score-header-container {
     display: flex;
     width: 100%;
@@ -113,6 +132,7 @@
     margin-right: 1rem;
     padding-left: 1rem;
     padding-right: 1rem;
+    font-family: "Lato";
 }
 
 .leaderboard-first-place {

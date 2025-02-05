@@ -4,6 +4,8 @@ import { useState , useEffect, useRef } from "react";
 import gameData from './Data'
 import axios from 'axios';
 import submitLoading from '../assets/images/submitLoading.gif'
+import confetti from 'canvas-confetti';
+
 
 const Game = () => {
     const { gameId } = useParams();
@@ -23,7 +25,6 @@ const Game = () => {
     const [isGameWon, setIsGameWon] = useState(false);
     const [username, setUsername] = useState('');
     const [scoreSubmitted, setScoreSubmitted] = useState(false);
-
 
     
     useEffect(() => {
@@ -198,7 +199,22 @@ const Game = () => {
             }
         }, 2000);
         return () => clearInterval(intervalId);
-    }, [isGameStarted]);
+    }, [isGameStarted ,isGameWon]);
+
+
+    useEffect(() => {
+        if (isGameWon) {
+            confetti({
+                particleCount: 150,
+                spread: 70,
+                startVelocity: 40,
+                ticks: 90,
+                colors: ['#1E90FF', '#00BFFF', '#87CEFA', '#4682B4'],
+                origin: { x: 0.5, y: 0.6 }, // Centered
+            });
+        }
+    }, [isGameWon]);
+    
 
 
     if (!game) {
@@ -256,7 +272,7 @@ const Game = () => {
             </div>
             {isGameStarted ? (
                 <div className={`timer-container ${targetSticky ? 'sticky' : ''}`}>
-                    <h2 className='timer-text'>{String(minutes).padStart(2, '0')}:{String(seconds).padStart(2, '0')}</h2>
+                    <h2 className='timer-text'>{String(minutes).padStart(2, '0')} : {String(seconds).padStart(2, '0')}</h2>
                 </div>
             ) : null}
             {isGameEnded && (

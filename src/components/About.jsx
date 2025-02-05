@@ -10,7 +10,7 @@ const About = () => {
     return (
         <div className='about-page-container'>
             <div className="about-container">
-                <h1 className="about-title">About Findr</h1>
+                <h1 className="about-title">About <span className="about-title-findr">Findr</span></h1>
                 <p className="about-text">
                     Findr is a fun and challenging game where you have to find and tag characters in a scene. The game starts off easy, but gets progressively harder as you progress through the levels.
                 </p>
