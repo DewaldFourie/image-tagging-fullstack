@@ -11,7 +11,7 @@ import lostMonkey from '../assets/images/lost-monkey.jpg'
 
 import game3IMG from '../assets/images/photo-tagging-hard.jpg'
 import garfield from '../assets/images/garfield.jpg'
-import jimmy from '../assets/images/jimmy.jpg'
+import jimmy from '../assets/images/Jimmy.jpg'
 import waldo from '../assets/images/waldo.jpg'
 
 // mock data 
