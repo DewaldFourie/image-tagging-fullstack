@@ -13,7 +13,7 @@
     width: 100%;
     height: 3rem;
     background-color: transparent;
-    color: black;
+    color: rgb(255, 255, 255);
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -23,7 +23,7 @@
 }
 
 .navbar.sticky {
-    background-color: #28282B; 
+    background-color: #000000; 
     position: fixed;
     color: white;
     z-index: 2;
@@ -41,13 +41,17 @@
 
 .brand-name {
     width: 12rem;
+    display: flex;
+    align-items: center;
 }
 
 .brand-name a{
-    font-size: 30px;
+    font-size: 40px;
     font-weight: bold;
-    color: rgb(0, 0, 0);
+    font-family: "Luckiest Guy";
+    color: rgb(255, 255, 255);
     text-decoration: none;
+    margin-top: 1rem;
 }
 
 .brand-name.sticky a {
@@ -60,17 +64,19 @@
 }
 
 .nav-links a {
-    color: rgb(0, 0, 0);
+    color: rgba(255, 255, 255, 0.755);
     text-decoration: none;
     margin: 0 20px;
+    font-family: "Bangers";
+    font-size: 20px;
 }
 
 .nav-links.sticky a{
-    color: white;
+    color: rgba(255, 255, 255, 0.751);
 }
 
 .nav-links a.active {
-    border-bottom: 2px solid #000000;
+    border-bottom: 2px solid #ffffff;
 }
 
 .navbar.sticky .nav-links a.active {

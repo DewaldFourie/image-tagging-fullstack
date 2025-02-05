@@ -178,7 +178,7 @@ const Game = () => {
             .then((response) => {
                 console.log(response.data);
                 setUsername('');
-                // navigate(`/leaderboard`);
+                navigate(`/leaderboard`);
             })
             .catch((error) => {
                 console.error(error);       
@@ -208,22 +208,24 @@ const Game = () => {
     return (
         <div className="game-container">
             <div className='game-top-container'>
-                <div className={`button-container ${targetSticky ? 'sticky' : ''}`}>
-                    <button
-                        className={`start-end-btn start ${!isGameStarted ? 'wiggle' : ''}`}
-                        onClick={handleStartGame}
-                        ref={startBtnRef}
-                        disabled={dropdownVisible || isGameWon}
-                    >
-                        {isGameStarted ? "Restart" : "Start"}
-                    </button>
-                    <button
-                        className={`start-end-btn end ${!isGameStarted ? 'hidden' : ''}`}
-                        onClick={handleEndGame}
-                    >
-                        End
-                    </button>
-                </div>
+                {!isGameWon &&(
+                    <div className={`button-container ${targetSticky ? 'sticky' : ''}`}>
+                        <button
+                            className={`start-end-btn start ${!isGameStarted ? 'wiggle' : ''}`}
+                            onClick={handleStartGame}
+                            ref={startBtnRef}
+                            disabled={dropdownVisible || isGameWon}
+                        >
+                            {isGameStarted ? "Restart" : "Start"}
+                        </button>
+                        <button
+                            className={`start-end-btn end ${!isGameStarted ? 'hidden' : ''}`}
+                            onClick={handleEndGame}
+                        >
+                            End
+                        </button>
+                    </div>
+                )}
                 <div className={`game-header-container ${targetSticky ? 'sticky' : ''}`}>
                     <h1 className='game-header'>{game.name}</h1>
                     <h4 className='game-description'>{game.description}</h4>

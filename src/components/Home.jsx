@@ -14,7 +14,7 @@ function Home() {
 
     return (
         <div className="home-container">
-            <h1>Select Theme:</h1>
+            <h1 className="home-title">SELECT THEME </h1>
             <div className="link-container">
                 <Link to="/game/g1">
                     <div className="preview-container">

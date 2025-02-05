@@ -7,6 +7,12 @@
     align-items: center;
 }
 
+.home-title {
+    font-family: "Luckiest Guy";
+    margin-bottom: 3rem;
+    color: rgba(255, 255, 255, 0.868);
+}
+
 .link-container {
     display: flex;
     width: 80%;
@@ -25,19 +31,24 @@
 }
 
 .preview-element {
-    border: 1px solid #28282be7;
     border-radius: 10px;
     height: 100%;
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 1.5rem;
+    font-size: 1.4rem;
     font-weight: bold;
     text-decoration: none;
     color: black;
     background-size: cover;
-    box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+    box-shadow: rgb(24, 97, 255) 0px 20px 30px -10px;
+    transition: transform 0.2s ease-in-out;
+}
+
+.preview-element:hover {
+    cursor: pointer;
+    transform: scale(1.02);
 }
 
 .preview-element.easy {
@@ -53,18 +64,20 @@
 }
 
 .preview-element-name-container {
-    background-color: #28282be7;
+    background-color: #000000eb;
     padding: 1rem;
     border-radius: 10px;
-    box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+    box-shadow: rgba(255, 255, 255, 0.999) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
     width: 8rem;
     display: flex;
     justify-content: center;
     align-items: center;
+    
 }
 
 .preview-element-name {
-    color: aliceblue;
+    color: rgba(255, 255, 255, 0.872);
+    font-family: "Bangers";
 }
 
 a:-webkit-any-link {
@@ -72,10 +85,11 @@ a:-webkit-any-link {
 }
 
 .leaderboard-link-container {
-    margin-top: 1rem;
+    margin-top: 2rem;
 }
 
 .leaderboard-link-container a{
     text-decoration: none;
-    color: #28282be7;
+    color: #ffffffae;
+    font-family: "Luckiest Guy";
 }
