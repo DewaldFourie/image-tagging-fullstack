@@ -7,7 +7,7 @@
 
 ## Overview
 
-The **Image Tagging Application** allows users to tag characters in a theme-related environment. Upon clicking "Start," the user will be timed from the moment the game begins. The total time taken to complete tagging will be counted as the user's score, which can be submitted to the overall leaderboard.
+The **Image Tagging Application** (FINDR) allows users to tag characters in a theme-related environment. Upon clicking "Start," the user will be timed from the moment the game begins. The total time taken to complete tagging will be counted as the user's score, which can be submitted to the overall leaderboard.
 
 This frontend is built using the **MERN** stack, with a focus on frontend technologies. The frontend communicates with a backend server to perform CRUD operations and retrieve data from a Supabase database.
 
