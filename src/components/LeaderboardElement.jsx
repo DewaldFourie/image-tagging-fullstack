@@ -3,7 +3,7 @@ import axios from 'axios';
 import gameData from "./Data";
 import './styles/leaderboardElement.css'
 import PropTypes from 'prop-types';
-import loader from '../assets/images/leaderboardLoader.gif'
+import loader from '../assets/images/42.gif'
 
 const LeaderboardElement = ({ gameId }) => {
     const [leaderboard, setLeaderboard] = useState(null);
