@@ -13,7 +13,8 @@ const LeaderboardElement = ({ gameId }) => {
         const fetchLeaderboard = async () => {
             try {
                 const response = await axios.get(`https://wilful-ninetta-dewaldfourie-4987cbf4.koyeb.app/api/leaderboards/${gameId}`);
-                setLeaderboard(response.data);
+                const sortedLeaderboard = response.data.sort((a, b) => a.score - b.score);
+                setLeaderboard(sortedLeaderboard);
             } catch (error) {
                 console.error(error);
             }
